@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>SWTHZ Concierge</title>
+<style>
+html,body{margin:0;height:100%;background:#000;color:#f8f7f2;font-family:"Helvetica Neue",Arial,sans-serif}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:#000}
+.msg{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}
+.w{font-weight:300;letter-spacing:.32em;font-size:1.6rem;padding-left:.32em}
+.c{font-size:.66rem;letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;margin-top:12px}
+.r{width:40px;height:1px;background:#cba481;margin:20px auto}
+p{color:#a9aaad;font-weight:300;max-width:300px;line-height:1.5}
+</style>
+</head>
+<body>
+<script>
+(function () {
+  var APP = 'https://script.google.com/macros/s/AKfycbw_Mfv1CaJeXH-0dZ0veDAVDdnD-hDJ9q9y9iXDGP4pJNMb2AtPLJvS2L0mlMVAFbW3/exec';
+  var r = (new URLSearchParams(location.search).get('r') || '').replace(/[^A-Za-z0-9]/g, '').slice(0, 20);
+  if (!r) {
+    document.body.innerHTML = '<div class="msg"><div class="w">SWTHZ</div><div class="c">Concierge</div><div class="r"></div><p>Scan the QR code in your suite to message the front desk.</p></div>';
+    return;
+  }
+  var f = document.createElement('iframe');
+  f.src = APP + '?page=suite&r=' + encodeURIComponent(r);
+  f.title = 'SWTHZ Concierge';
+  f.allow = 'screen-wake-lock; vibrate';
+  document.body.appendChild(f);
+})();
+</script>
+</body>
+</html>
